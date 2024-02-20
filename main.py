@@ -132,3 +132,7 @@ def gui():
     # Scan Button
     scan_btn = ttk.Button(input_frame, text="Scan", command=on_scan)
     scan_btn.grid(column=3, row=1, pady=5, sticky=tk.E)
+    app.mainloop()
+
+if __name__ == "__main__":
+    gui()
