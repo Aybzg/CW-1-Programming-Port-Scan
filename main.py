@@ -120,3 +120,12 @@ def gui():
         if len(ports) != 2 or not max_threads:
             messagebox.showerror("Invalid Input", "Please enter a valid port range and max threads.")
             return
+        start_port, end_port = int(ports[0]), int(ports[1])
+        sem = threading.Semaphore(max_threads)
+        results = []
+
+        scan_btn.config(state=tk.DISABLED)  # Disable the scan button during scan
+        status_var.set("Scanning...")
+
+        for port in range(start_port, end_port + 1):
+            threading.Thread(target=scan_port, args=(host, port, output_text, sem, results, status_var, scan_btn), daemon=True).start()
