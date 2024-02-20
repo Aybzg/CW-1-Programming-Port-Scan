@@ -129,3 +129,6 @@ def gui():
 
         for port in range(start_port, end_port + 1):
             threading.Thread(target=scan_port, args=(host, port, output_text, sem, results, status_var, scan_btn), daemon=True).start()
+    # Scan Button
+    scan_btn = ttk.Button(input_frame, text="Scan", command=on_scan)
+    scan_btn.grid(column=3, row=1, pady=5, sticky=tk.E)
