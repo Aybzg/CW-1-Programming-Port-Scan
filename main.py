@@ -88,3 +88,18 @@ def gui():
     input_frame.pack(padx=10, pady=5, fill='x', expand=True)
 
     global host_entry, ports_entry
+    # Host Entry
+    ttk.Label(input_frame, text="Host IP:").grid(column=0, row=0, sticky=tk.W, pady=2)
+    host_entry = ttk.Entry(input_frame, width=30)
+    host_entry.grid(column=1, row=0, sticky=tk.EW, pady=2, padx=5)
+
+    # Ports Entry
+    ttk.Label(input_frame, text="Ports Range:").grid(column=0, row=1, sticky=tk.W, pady=2)
+    ports_entry = ttk.Entry(input_frame, width=30)
+    ports_entry.grid(column=1, row=1, sticky=tk.EW, pady=2, padx=5)
+
+    # Max Threads Entry
+    ttk.Label(input_frame, text="Max Threads:").grid(column=2, row=0, padx=5, sticky=tk.W)
+    concurrency_entry = ttk.Entry(input_frame, width=10)
+    concurrency_entry.insert(0, "50")
+    concurrency_entry.grid(column=3, row=0, sticky=tk.EW, padx=5)
