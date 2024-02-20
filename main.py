@@ -103,3 +103,8 @@ def gui():
     concurrency_entry = ttk.Entry(input_frame, width=10)
     concurrency_entry.insert(0, "50")
     concurrency_entry.grid(column=3, row=0, sticky=tk.EW, padx=5)
+    # Output frame for scan results and actions
+    output_frame = ttk.Frame(app, padding="10")
+    output_frame.pack(padx=10, pady=5, fill='both', expand=True)
+    output_text = scrolledtext.ScrolledText(output_frame, width=70, height=25)
+    output_text.pack(pady=10, fill='both', expand=True)
