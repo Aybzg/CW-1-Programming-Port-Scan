@@ -69,3 +69,22 @@ def gui():
             with open(file, "w") as file_output:
                 file_output.write(text)
             status_var.set("Results saved successfully.")
+    # Function to clear the output
+    def clear_output():
+        output_text.delete("1.0", tk.END)
+        status_var.set("Output cleared.")
+
+    # Function to exit the application
+    def exit_app():
+        app.quit()
+
+    file_menu.add_command(label="Save Results", command=save_results)
+    file_menu.add_command(label="Clear Output", command=clear_output)
+    file_menu.add_separator()
+    file_menu.add_command(label="Exit", command=exit_app)
+
+    # Input frame for host, ports, and controls
+    input_frame = ttk.Frame(app, padding="10")
+    input_frame.pack(padx=10, pady=5, fill='x', expand=True)
+
+    global host_entry, ports_entry
