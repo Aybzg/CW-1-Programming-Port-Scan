@@ -47,3 +47,25 @@ def gui():
     style.configure("TButton", background="#333333", foreground="#FFFFFF", borderwidth=1)
     style.configure("TFrame", background="#333333", relief="flat")
     style.map("TButton", background=[('active', '#0052cc'), ('disabled', '#333333')])
+    # Menu Bar
+    menu_bar = Menu(app, bg="#333333", fg="#FFFFFF", relief=tk.FLAT)
+    app.config(menu=menu_bar)
+
+    # File Menu
+    file_menu = Menu(menu_bar, tearoff=0, bg="#333333", fg="#FFFFFF")
+    menu_bar.add_cascade(label="File", menu=file_menu)
+
+    # Status Bar
+    status_var = tk.StringVar()
+    status_var.set("Ready")
+    status_bar = ttk.Label(app, textvariable=status_var, background="#555555", foreground="#FFFFFF", relief=tk.SUNKEN, anchor=tk.W)
+    status_bar.pack(side=tk.BOTTOM, fill=tk.X)
+
+    # Function to save results
+    def save_results():
+        text = output_text.get("1.0", tk.END)
+        file = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file:
+            with open(file, "w") as file_output:
+                file_output.write(text)
+            status_var.set("Results saved successfully.")
