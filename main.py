@@ -108,3 +108,15 @@ def gui():
     output_frame.pack(padx=10, pady=5, fill='both', expand=True)
     output_text = scrolledtext.ScrolledText(output_frame, width=70, height=25)
     output_text.pack(pady=10, fill='both', expand=True)
+    # Scan function with IP validation and threading enhancements
+    def on_scan():
+        host = host_entry.get()
+        if not valid_ip(host):
+            messagebox.showerror("Invalid Input", "Please enter a valid IP address.")
+            return
+
+        ports = ports_entry.get().split('-')
+        max_threads = int(concurrency_entry.get())
+        if len(ports) != 2 or not max_threads:
+            messagebox.showerror("Invalid Input", "Please enter a valid port range and max threads.")
+            return
