@@ -33,3 +33,17 @@ def scan_port(host, port, output, sem, results, status_var, scan_btn):
             if port == int(ports_entry.get().split('-')[1]):  # Check if it's the last port
                 scan_btn.config(state=tk.NORMAL)
                 status_var.set("Scan completed.")
+# Main GUI application
+def gui():
+    app = tk.Tk()
+    app.title("Cool Port Scanner")
+    app.geometry("800x600")  # Set initial size of the window
+    app.configure(bg='#333333')
+
+    # Custom style
+    style = ttk.Style(app)
+    style.theme_use("clam")
+    style.configure("TLabel", background="#333333", foreground="#FFFFFF")
+    style.configure("TButton", background="#333333", foreground="#FFFFFF", borderwidth=1)
+    style.configure("TFrame", background="#333333", relief="flat")
+    style.map("TButton", background=[('active', '#0052cc'), ('disabled', '#333333')])
